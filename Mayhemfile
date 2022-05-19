@@ -1,0 +1,9 @@
+project: rnshah9/libewf
+target: libewf
+image: ghcr.io/rnshah9/playground:libewf
+tests:
+  - file://tests/data
+
+cmds:
+  - cmd: /usr/local/bin/ewfinfo @@
+    filepath: /test.E01
