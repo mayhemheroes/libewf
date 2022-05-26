@@ -1,6 +1,5 @@
 project: rnshah9/libewf
-target: libewf
-image: ghcr.io/rnshah9/playground:libewf
+target: ewfinfo
 tests:
   - file://tests/data
 
