@@ -1,8 +1,8 @@
-project: rnshah9/libewf
+project: libewf
 target: ewfinfo
-tests:
+testsuite:
   - file://tests/data
 
 cmds:
-  - cmd: /usr/local/bin/ewfinfo @@
+  - cmd: /usr/local/bin/ewfinfo /test.E01
     filepath: /test.E01
