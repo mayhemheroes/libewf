@@ -14,10 +14,10 @@ ENV LD_LIBRARY_PATH=/usr/local/lib
 RUN ldconfig
 
 RUN mkdir -p /deps
-RUN ldd /repo/fe | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
+RUN ldd /usr/local/bin/ewfinfo | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
 
 FROM ubuntu:20.04 as package
 
 COPY --from=builder /deps /deps
-COPY --from=builder /repo/fe /repo/fe
+COPY --from=builder /usr/local/bin/ewfinfo /usr/local/bin/ewfinfo
 ENV LD_LIBRARY_PATH=/deps
