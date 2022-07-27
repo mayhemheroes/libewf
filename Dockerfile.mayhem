@@ -3,21 +3,13 @@ FROM --platform=linux/amd64 ubuntu:20.04 as builder
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential automake pkg-config autopoint libtool git bison flex
 
-ADD . /repo
+COPY . /repo
 WORKDIR /repo
 RUN ./synclibs.sh
 RUN ./autogen.sh
-RUN ./configure
+RUN ./configure --prefix=/install
 RUN make -j8
 RUN make install
-ENV LD_LIBRARY_PATH=/usr/local/lib
-RUN ldconfig
-
-RUN mkdir -p /deps
-RUN ldd /usr/local/bin/ewfinfo | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
 
 FROM ubuntu:20.04 as package
-
-COPY --from=builder /deps /deps
-COPY --from=builder /usr/local/bin/ewfinfo /usr/local/bin/ewfinfo
-ENV LD_LIBRARY_PATH=/deps
+COPY --from=builder /install /install

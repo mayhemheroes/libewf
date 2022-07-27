@@ -4,5 +4,4 @@ testsuite:
   - file://tests/data
 
 cmds:
-  - cmd: /usr/local/bin/ewfinfo /test.E01
-    filepath: /test.E01
+  - cmd: /install/bin/ewfinfo @@
