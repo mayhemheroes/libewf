@@ -5,3 +5,4 @@ testsuite:
 
 cmds:
   - cmd: /install/bin/ewfinfo @@
+    filepath: /test.E01
