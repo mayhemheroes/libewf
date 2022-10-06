@@ -1,0 +1,8 @@
+project: libewf
+target: ewfinfo
+testsuite:
+  - file://tests/data
+
+cmds:
+  - cmd: /install/bin/ewfinfo @@
+    filepath: /test.E01
